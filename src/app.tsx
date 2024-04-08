@@ -1,6 +1,7 @@
 import { useEffect } from 'preact/hooks'
 import Chart1 from './components/chart1'
 import Chart2 from './components/chart2'
+import Chart3 from './components/chart3'
 import { usePostMessageWithHeight } from './hooks/usePostHeightMessage'
 
 export function App({ chart }: { chart: string | null }) {
@@ -15,6 +16,7 @@ export function App({ chart }: { chart: string | null }) {
     <div ref={containerRef}>
       {chart === "1" && <Chart1 />}
       {chart === "2" && <Chart2 />}
+      {chart === "3" && <Chart3 />}
     </div>
   )
 }
