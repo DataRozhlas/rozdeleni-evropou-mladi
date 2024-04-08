@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'preact/hooks'
 import Highcharts from 'highcharts';
 import addHighchartsMore from 'highcharts/highcharts-more';
 
@@ -15,7 +15,7 @@ const plotOptions = {
 const roundToOneDecimal = (num: number) => { const result = parseFloat(num.toFixed(1)); return result.toLocaleString("cs-Cz") + " %" };
 
 
-export default function Chart1() {
+export default function Chart2() {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
