@@ -9,6 +9,15 @@ const plotOptions = {
 
 
 export default function SubBarChart({ categories, data, color, windowWidth }: { categories: string[], data: number[], color: string, windowWidth: number }) {
+    // Assuming categories and data are two arrays
+    let combined = categories.map((category, i) => ({ category, data: data[i] }));
+
+    // Sort based on data
+    combined.sort((a, b) => b.data - a.data);
+
+    // Separate back into categories and data
+    let sortedCategories = combined.map(item => item.category);
+    let sortedData = combined.map(item => item.data);
     return (
         <HighchartsProvider Highcharts={Highcharts}>
             <HighchartsChart plotOptions={plotOptions}>
@@ -17,12 +26,12 @@ export default function SubBarChart({ categories, data, color, windowWidth }: { 
 
                 <Tooltip valueSuffix=' %' valueDecimals={2} />
 
-                <XAxis categories={categories} >
+                <XAxis categories={sortedCategories} >
 
                 </XAxis>
 
                 <YAxis labels={{ formatter: function () { return this.isLast ? `${this.value} %` : this.value.toString() } }}>
-                    <BarSeries dataSorting={{ enabled: true }} pointPadding={0.1} groupPadding={0} color={color} dataLabels={{ inside: false, enabled: true, formatter: function () { return this.y + " %" || 0 + " %" }, color: "#000", style: { textOutline: "none" } }} name="rozhodně ano" data={data} />
+                    <BarSeries pointPadding={0.1} groupPadding={0} color={color} dataLabels={{ inside: false, enabled: true, formatter: function () { return this.y + " %" || 0 + " %" }, color: "#000", style: { textOutline: "none" } }} name="rozhodně ano" data={sortedData} />
                 </YAxis>
             </HighchartsChart>
         </HighchartsProvider>)
