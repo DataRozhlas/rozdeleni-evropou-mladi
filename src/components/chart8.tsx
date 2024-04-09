@@ -1,4 +1,4 @@
-import { useState, useEffect } from "preact/hooks"
+import { useState, useEffect } from "react"
 import {
     Select,
     SelectContent,
@@ -76,7 +76,7 @@ export default function Chart8() {
     }, []);
 
     return (
-        <div>
+        <div className="max-w-[620px] mx-auto">
             <h1 className="text-xl font-bold">Na co se má EU v dohledné budoucnosti určitě zaměřit?</h1>
             <div className="my-2">
                 <Select onValueChange={(e) => {
@@ -90,7 +90,7 @@ export default function Chart8() {
                     </SelectTrigger>
                     <SelectContent>
                         {groups.map((group, index) => (
-                            <SelectItem key={index} value={index}>{group[0]}</SelectItem>
+                            <SelectItem key={index} value={index.toString()}>{group[0]}</SelectItem>
                         ))}
                     </SelectContent>
                 </Select>

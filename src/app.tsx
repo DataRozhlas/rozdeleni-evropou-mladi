@@ -1,4 +1,4 @@
-import { useEffect } from 'preact/hooks'
+import { useEffect } from 'react'
 import Chart1 from './components/chart1'
 import Chart2 from './components/chart2'
 import Chart3 from './components/chart3'
@@ -10,8 +10,8 @@ import Chart8 from './components/chart8'
 
 import { usePostMessageWithHeight } from './hooks/usePostHeightMessage'
 
-export function App({ chart }: { chart: string | null }) {
-  //const [count, setCount] = useState(0)
+
+function App({ chart }: { chart: string | null }) {
   const { containerRef, postHeightMessage } = usePostMessageWithHeight(`chart-${chart}`)
 
   useEffect(() => {
@@ -30,6 +30,7 @@ export function App({ chart }: { chart: string | null }) {
       {chart === "7" && <Chart7 />}
       {chart === "8" && <Chart8 />}
 
-    </div>
-  )
+    </div>)
 }
+
+export default App

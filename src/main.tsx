@@ -1,11 +1,16 @@
-import { render } from 'preact'
-import { App } from './app.tsx'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.tsx'
 import './index.css'
 
 function getURLParameter(name: string): string | null {
-    return new URLSearchParams(window.location.search).get(name);
+  return new URLSearchParams(window.location.search).get(name);
 }
 
 let chart = getURLParameter('chart');
 
-render(<App chart={chart} />, document.getElementById('app')!)
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App chart={chart} />
+  </React.StrictMode>,
+)

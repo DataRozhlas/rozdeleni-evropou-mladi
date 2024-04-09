@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'preact/hooks'
+import { useState, useEffect } from 'react'
 import Highcharts from 'highcharts';
 import addHighchartsMore from 'highcharts/highcharts-more';
 
