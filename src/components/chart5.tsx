@@ -75,7 +75,7 @@ const item: Item = {
 const roundToOneDecimal = (num: number) => { const result = parseFloat(num.toFixed(1)); return result.toLocaleString("cs-Cz") + " %" };
 
 
-const Chart4 = () => {
+const Chart5 = () => {
 
 
     const thisChartColors: string[] = [
@@ -110,7 +110,7 @@ const Chart4 = () => {
                     }
                 }}>
                     <Chart type="bar" height={isMobile ? 190 : 176 * 0.7} marginLeft={115} marginBottom={0} marginRight={20} />
-                    <XAxis type="category" categories={["Celá populace"]} />
+                    <XAxis type="category" categories={["Mladí 18-29"]} />
                     <YAxis max={100} labels={{ enabled: false }}>
                         {item.a.reverse().map((answer, index) => {
                             const name = answer[0].toString()
@@ -149,4 +149,4 @@ const Chart4 = () => {
     )
 }
 
-export default Chart4;
+export default Chart5;
