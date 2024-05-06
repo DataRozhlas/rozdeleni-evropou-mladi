@@ -7,6 +7,8 @@ import Chart5 from './components/chart5'
 import Chart6 from './components/chart6'
 import Chart7 from './components/chart7'
 import Chart8 from './components/chart8'
+import Chart9 from './components/chart9'
+
 
 import { usePostMessageWithHeight } from './hooks/usePostHeightMessage'
 
@@ -29,6 +31,8 @@ function App({ chart }: { chart: string | null }) {
       {chart === "6" && <Chart6 />}
       {chart === "7" && <Chart7 />}
       {chart === "8" && <Chart8 />}
+      {chart === "9" && <Chart9 />}
+
 
     </div>)
 }
