@@ -53,7 +53,7 @@ export default function Chart2() {
 
                     </XAxis>
 
-                    <YAxis labels={{ formatter: function () { return this.isLast ? `${this.value} %` : this.value.toString() } }}>
+                    <YAxis max={60} labels={{ formatter: function () { return this.isLast ? `${this.value} %` : this.value.toString() } }}>
                         <BarSeries pointPadding={0.1} groupPadding={0} color={"#5651ce"} dataLabels={{ inside: false, enabled: true, formatter: function () { return roundToOneDecimal(this.y || 0) }, color: "#000", style: { textOutline: "none" } }} name="Souhlasí" data={[
                             55.4081250948619,
                             36.1640808373567,

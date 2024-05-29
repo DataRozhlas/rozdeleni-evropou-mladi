@@ -62,7 +62,7 @@ const Chart10 = () => {
                         states: { hover: { enabled: false } }, // disable hover
                     }
                 }}>
-                    <Chart type="bar" height={isMobile ? 115 : 176 * 0.7} marginLeft={115} marginBottom={0} marginRight={20} />
+                    <Chart type="bar" height={isMobile ? 110 : 176 * 0.7} marginLeft={115} marginBottom={0} marginRight={20} />
                     <XAxis type="category" categories={["EU"]} />
                     <YAxis max={100} labels={{ enabled: false }}>
                         {item.a.map((answer, index) => {
@@ -88,7 +88,7 @@ const Chart10 = () => {
                         states: { hover: { enabled: false } }, // disable hover
                     }
                 }}>
-                    <Chart type="bar" height={isMobile ? 115 : 176 * 0.7} marginLeft={115} marginBottom={0} marginRight={20} />
+                    <Chart type="bar" height={isMobile ? 80 : 176 * 0.7} marginLeft={115} marginBottom={0} marginTop={0} marginRight={20} />
                     <XAxis type="category" categories={["NATO"]} />
                     <YAxis max={100} labels={{ enabled: false }}>
                         {item.a.map((answer, index) => {

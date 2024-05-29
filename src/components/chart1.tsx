@@ -3,7 +3,7 @@ import Highcharts from 'highcharts';
 import addHighchartsMore from 'highcharts/highcharts-more';
 
 import {
-    HighchartsProvider, HighchartsChart, Chart, XAxis, YAxis, BarSeries, Tooltip
+    HighchartsProvider, HighchartsChart, Chart, XAxis, YAxis, BarSeries, Tooltip, Legend
 } from 'react-jsx-highcharts';
 
 addHighchartsMore(Highcharts);
@@ -67,6 +67,7 @@ export default function Chart1() {
                         ]} />
 
                     </YAxis>
+                    <Legend reversed={true} verticalAlign='top' floating={false} navigation={{ enabled: false }} />
                 </HighchartsChart>
             </HighchartsProvider>
             <div>
