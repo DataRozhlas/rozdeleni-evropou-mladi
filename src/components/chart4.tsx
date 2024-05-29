@@ -20,7 +20,7 @@ const isMobile = window.innerWidth < 640;
 
 
 const item: Item = {
-    q: "Jsou lidé ve věku 18-29 celkově spokojeni s členství Česka v EU?",
+    q: "Jsou lidé ve věku 18-29 celkově spokojeni s členstvím Česka v EU?",
     a: [
         ["Určitě ano", 17.3313965467036,
             71.8069886769121,

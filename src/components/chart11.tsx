@@ -20,84 +20,37 @@ const isMobile = window.innerWidth < 640;
 
 
 const item: Item = {
-    q: "Evropané, nebo Češi?",
+    q: "Důvěra v EU, NATO a české instituce",
     a: [
-        ["výhradně Čechem/Češkou, vůbec ne Evropanem/Evropankou", 11.2126000282537,
-            6.75667524220059,
-            3.04911237378714,
-            6.34922682803169,
-            12.0514301331974,
-            24.9436622350289,
-            28.6448637103631
-        ],
-        ["více Čechem/Češkou než Evropanem/Evropankou", 34.258792576456,
-            33.8373435851133,
-            27.5924526707323,
-            38.9623317809447,
-            38.456379493088,
-            31.4260181419867,
-            19.155396035729
-        ],
-        ["stejně Čechem/Češkou jako Evropanem/Evropankou", 36.9934738811416,
-            42.6524733862247,
-            56.2686543605526,
-            41.574498351521,
-            31.346095878507,
-            19.8049308779367,
-            15.5160021045269],
-        ["více Evropanem/Evropankou než Čechem/Češkou", 8.60719838903932,
-            15.3501588303981,
-            8.60233107613304,
-            8.56921069144782,
-            10.6609948765696,
-            4.22442762673348,
-            0
-        ], [
-            "výhradně Evropanem/Evropankou, vůbec ne Čechem/Češkou", 1.39053136140032,
-            0,
-            1.81654034276368,
-            1.09018311945938,
-            2.37433314454479,
-            0,
-            4.02036950351492
-        ],
-        ["necítím se být ani jedním", 7.537403763709,
-            1.40334895606334,
-            2.67090917603119,
-            3.45454922859526,
-            5.11076647409328,
-            19.6009611183142,
-            32.663368645866
-        ]
+        ["Určitě ano", 32.2963888543181, 24.0775016546794, 17.9530228596982, 26.0200080786765, 34.1911750657477, 33.2906313112715, 43.2904830214543],
+        ["Spíše ne", 27.774207797033, 21.2031717498974, 22.9822559155573, 21.7381748328503, 33.5691924958113, 37.9894078895916, 35.5033818755825],
+        ["Spíše ano", 31.1247049122571, 36.4882705362652, 41.029027494416, 31.2624825608368, 23.9507635621809, 24.4199201797671, 16.4622345730705],
+        ["Určitě ano", 8.80469843639178, 18.2310560591579, 18.0356937303284, 20.9793345276364, 8.8886887626004, 4.30004061936967, 4.74390052989264],
     ]
 }
 
 const roundToOneDecimal = (num: number) => { const result = parseFloat(num.toFixed(1)); return result.toLocaleString("cs-Cz") + " %" };
 
 
-const Chart5 = () => {
+const Chart10 = () => {
 
 
     const thisChartColors: string[] = [
-        "#ccc6c8",
-        "#5651ce",
-        "#85a1e0",
-        "#f2d0a2",
+        "#db3d78",
         "#e293b3",
-        "#db3d78"
-    ]
+        "#85a1e0",
+        "#5651ce"
+    ]  // 0, 1, 2] ]
 
     return (
         <div>
             <HighchartsProvider Highcharts={Highcharts}>
 
                 <h1 className="text-xl font-bold">{`${item.q}`}</h1>
-                <h2 className="text-lg">Odpovědi mladých 18-29 let, zda se víc cítí Evropany, nebo Čechy</h2>
+                <h2 className="text-lg">„Důvěřujete následujícím institucím?“</h2>
                 <HighchartsChart plotOptions={{
                     bar: {
                         pointWidth: 60,
-                        pointPadding: 0,
-                        groupPadding: 0.125,
                         events: {
                             legendItemClick: function () {
                                 return false;
@@ -109,21 +62,45 @@ const Chart5 = () => {
                         states: { hover: { enabled: false } }, // disable hover
                     }
                 }}>
-                    <Chart type="bar" height={isMobile ? 190 : 176 * 0.7} marginLeft={115} marginBottom={0} marginRight={20} />
-                    <XAxis type="category" categories={["Mladí 18-29"]} />
+                    <Chart type="bar" height={isMobile ? 115 : 176 * 0.7} marginLeft={115} marginBottom={0} marginRight={20} />
+                    <XAxis type="category" categories={["EU"]} />
                     <YAxis max={100} labels={{ enabled: false }}>
-                        {item.a.reverse().map((answer, index) => {
+                        {item.a.map((answer, index) => {
                             const name = answer[0].toString()
                             const data = answer.slice(1, 2)
                             return <BarSeries key={index} name={name} data={data} stacking='normal' color={thisChartColors[index]} dataLabels={{ enabled: true, formatter: function () { return roundToOneDecimal(this.y || 0) }, color: "#FFF", style: { textOutline: "none" } }} />
                         })}
                     </YAxis>
-                    <Legend reversed={true} verticalAlign='top' floating={false} navigation={{ enabled: false }} />
+                    <Legend reversed={true} verticalAlign='top' floating={false} />
                     <Tooltip valueDecimals={1} valueSuffix=" %" />
                 </HighchartsChart>
                 <HighchartsChart plotOptions={{
                     bar: {
-                        pointPadding: 0,
+                        pointWidth: 60,
+                        events: {
+                            legendItemClick: function () {
+                                return false;
+                            }
+                        }
+                    },
+                    series: {
+                        animation: false,
+                        states: { hover: { enabled: false } }, // disable hover
+                    }
+                }}>
+                    <Chart type="bar" height={isMobile ? 115 : 176 * 0.7} marginLeft={115} marginBottom={0} marginRight={20} />
+                    <XAxis type="category" categories={["NATO"]} />
+                    <YAxis max={100} labels={{ enabled: false }}>
+                        {item.a.map((answer, index) => {
+                            const name = answer[0].toString()
+                            const data = answer.slice(2, 3)
+                            return <BarSeries key={index} name={name} data={data} stacking='normal' color={thisChartColors[index]} dataLabels={{ enabled: true, formatter: function () { return roundToOneDecimal(this.y || 0) }, color: "#FFF", style: { textOutline: "none" } }} />
+                        })}
+                    </YAxis>
+                    <Tooltip valueDecimals={1} valueSuffix=" %" />
+                </HighchartsChart>
+                <HighchartsChart plotOptions={{
+                    bar: {
                         groupPadding: 0.125,
                     },
                     series: {
@@ -132,11 +109,11 @@ const Chart5 = () => {
                     }
                 }}>
                     <Chart type="bar" height={isMobile ? 240 : 320} margin={[0, 20, 50, 115]} />
-                    <XAxis type="category" categories={["Euronadšenci", "Příznivci", "Vlažní příznivci", "Nejistí", "Odpůrci", "Skalní odpůrci"]} />
+                    <XAxis type="category" categories={["Ústavní soud", "Prezident republiky", "Senát", "Poslanecká sněmovna Parlamentu", "Členové vlády ČR"]} />
                     <YAxis max={100} labels={{ formatter: function () { return this.isLast ? `${this.value} %` : this.value.toString() } }}>
                         {item.a.map((answer, index) => {
                             const name = answer[0].toString()
-                            const data = answer.slice(2, 8)
+                            const data = answer.slice(3, 8)
                             return <BarSeries key={index} name={name} data={data} stacking='normal' color={thisChartColors[index]} dataLabels={{ enabled: true, formatter: function () { return roundToOneDecimal(this.y || 0) }, color: "#FFF", style: { textOutline: "none" } }} />
                         })}
                     </YAxis>
@@ -149,4 +126,4 @@ const Chart5 = () => {
     )
 }
 
-export default Chart5;
+export default Chart10;
